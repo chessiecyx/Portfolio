@@ -16,5 +16,5 @@ A personal portfolio site for showcasing selected projects in creative technolog
 Add your portfolio link here.
 
 ## Contact
-- Email: yc625@duke.edu
+- Email: yc625@duke.edu / chessiecyx@gmail.com
 - LinkedIn: https://linkedin.com/in/yixuan-chen-64a166403
