@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRAMAAAA! | Board Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">DRAMAAAA!</div>
+      <div class="nav-links">
+        <a href="#overview">
+          <span class="lang en active">Overview</span>
+          <span class="lang zh">简介</span>
+        </a>
+        <a href="#video">
+          <span class="lang en active">Video</span>
+          <span class="lang zh">视频</span>
+        </a>
+        <a href="#photo">
+          <span class="lang en active">Photo</span>
+          <span class="lang zh">图片</span>
+        </a>
+        <a href="#rulebook">
+          <span class="lang en active">Rulebook</span>
+          <span class="lang zh">规则书</span>
+        </a>
+      </div>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="panel hero-copy">
+          <div class="eyebrow">
+            <span class="lang en active">Fame · Fortune · Scandal</span>
+            <span class="lang zh">名望 · 财富 · 丑闻</span>
+          </div>
+          <h1>DRAMAAAA!</h1>
+          <h2 class="tagline">
+            <span class="lang en active">Welcome to the entertainment industry.</span>
+            <span class="lang zh">欢迎来到娱乐圈。</span>
+          </h2>
+          <p class="hero-text">
+            <span class="lang en active">A theatrical board game set in the entertainment industry, where players navigate fame, fortune, favors, and scandal while competing to become the ultimate superstar.</span>
+            <span class="lang zh">一个以娱乐圈为背景的戏剧化桌游。玩家将在名望、财富、人情与丑闻之间周旋，并在竞争中争夺“终极巨星”的位置。</span>
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">
+                <span class="lang en active">Players</span>
+                <span class="lang zh">人数</span>
+              </span>
+              <span class="stat-value">4</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">
+                <span class="lang en active">Age</span>
+                <span class="lang zh">年龄</span>
+              </span>
+              <span class="stat-value">12+</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">
+                <span class="lang en active">Playtime</span>
+                <span class="lang zh">时长</span>
+              </span>
+              <span class="stat-value">30–45 min</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">
+                <span class="lang en active">Rounds</span>
+                <span class="lang zh">轮数</span>
+              </span>
+              <span class="stat-value">8</span>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#video" class="btn btn-primary">
+              <span class="lang en active">Watch Video</span>
+              <span class="lang zh">观看视频</span>
+            </a>
+            <a href="#rulebook" class="btn btn-secondary">
+              <span class="lang en active">Open Rulebook</span>
+              <span class="lang zh">打开规则书</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="panel rulebook-cover-panel">
+          <img src="RulebookCover.png" alt="DRAMAAAA! Rulebook Cover" class="rulebook-cover-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+      <div class="section-heading">
+        <h2>
+          <span class="lang en active">Overview</span>
+          <span class="lang zh">简介</span>
+        </h2>
+        <div class="eyebrow" style="margin-top: 8px;">
+          <span class="lang en active">About the Game</span>
+          <span class="lang zh">关于这个游戏</span>
+        </div>
+      </div>
+      <div class="panel content-panel">
+        <p>
+          <span class="lang en active">DRAMAAAA! is a social board game themed around the entertainment industry. Players build status through money, trend, and reputation, while also dealing with favors, reversals, and scandal.</span>
+          <span class="lang zh">DRAMAAAA! 是一个以娱乐圈为主题的社交型桌游。玩家通过金钱、热度和声望建立自己的地位，同时也要应对人情交换、局势反转与丑闻曝光。</span>
+        </p>
+        <p>
+          <span class="lang en active">The overall tone is theatrical, dramatic, and playful. Rather than focusing on realism, the game turns celebrity culture into a competitive social system full of timing, tension, and performance.</span>
+          <span class="lang zh">整体气质偏戏剧化、夸张且富有玩味。这个游戏并不追求写实，而是把“明星文化”转化为一个充满时机、张力与表演性的竞争性社交系统。</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="section">
+      <div class="section-heading">
+        <h2>
+          <span class="lang en active">Video</span>
+          <span class="lang zh">视频</span>
+        </h2>
+        <div class="eyebrow" style="margin-top: 8px;">
+          <span class="lang en active">Gameplay / Introduction Video</span>
+          <span class="lang zh">玩法 / 介绍视频</span>
+        </div>
+      </div>
+      <div class="panel video-panel">
+        <!-- Vimeo Embed 包装器，配合 css 中 .vimeo-wrapper 实现圆角和边框 -->
+        <div class="vimeo-wrapper" style="padding:56.25% 0 0 0;position:relative;">
+          <iframe src="https://player.vimeo.com/video/1185169799?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Video"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+    </section>
+
+    <!-- Photo Section -->
+    <section id="photo" class="section">
+      <div class="section-heading">
+        <h2>
+          <span class="lang en active">Photo</span>
+          <span class="lang zh">图片</span>
+        </h2>
+        <div class="eyebrow" style="margin-top: 8px;">
+          <span class="lang en active">Game Materials</span>
+          <span class="lang zh">游戏材料展示</span>
+        </div>
+      </div>
+      <div class="panel single-photo">
+        <img src="Photo.jpg" alt="DRAMAAAA! Components" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Rulebook Section -->
+    <section id="rulebook" class="section" style="padding-bottom: 60px;">
+      <div class="section-heading">
+        <h2>
+          <span class="lang en active">Rulebook</span>
+          <span class="lang zh">规则书</span>
+        </h2>
+        <div class="eyebrow" style="margin-top: 8px;">
+          <span class="lang en active">Read the Full Rulebook</span>
+          <span class="lang zh">查看完整规则书</span>
+        </div>
+      </div>
+      <div class="panel download-panel">
+        <div>
+          <p>
+            <span class="lang en active">Open the PDF to view the complete rules, setup, gameplay flow, and scoring system.</span>
+            <span class="lang zh">打开 PDF 查看完整规则、游戏准备方式、流程以及计分系统。</span>
+          </p>
+        </div>
+        <div class="download-actions">
+          <a href="Rulebook.pdf" target="_blank" class="btn btn-primary">
+            <span class="lang en active">Open PDF</span>
+            <span class="lang zh">打开 PDF</span>
+          </a>
+          <a href="Rulebook.pdf" download class="btn btn-secondary">
+            <span class="lang en active">Download PDF</span>
+            <span class="lang zh">下载 PDF</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // 语言切换逻辑
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const langElements = document.querySelectorAll('.lang');
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // 更新按钮状态
+        langBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // 获取所选语言
+        const targetLang = btn.dataset.lang;
+
+        // 更新文本显示
+        langElements.forEach(el => {
+          if (el.classList.contains(targetLang)) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        });
+        
+        // 更新HTML lang属性
+        document.documentElement.lang = targetLang;
+      });
+    });
+  </script>
+</body>
+</html>

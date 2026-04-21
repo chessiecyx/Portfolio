@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Jewelry Thieves</title>
+  <meta
+    name="description"
+    content="A cooperative Unity 2D game project presented through narrative, tutorials, gameplay outcomes, and final states."
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #1a1a1a;
+      --bg-soft: #222222;
+      --card: #2a2a2a;
+      --card-hover: #303030;
+      --line: #4a4a4a;
+      --line-soft: #3d3d3d;
+      --text: #f5f5f5;
+      --text-soft: #d4d4d4;
+      --text-muted: #aaaaaa;
+      --pill: #2b2b2b;
+      --shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+      --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 32%),
+        linear-gradient(to bottom, #242424 0%, #1f1f1f 42%, #1a1a1a 100%);
+      color: var(--text);
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 44px 24px 80px;
+    }
+
+    .lang {
+      display: none;
+    }
+
+    .lang.active {
+      display: inline;
+    }
+
+    .eyebrow,
+    .card-label,
+    .group-label {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: #d6d6d6;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition:
+        background 320ms ease,
+        color 320ms ease,
+        transform 320ms ease;
+    }
+
+    .lang-btn:hover {
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .lang-btn.active {
+      background: #f0f0f0;
+      color: #1f1f1f;
+    }
+
+    .hero {
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.85s ease forwards;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+
+    .summary {
+      max-width: 780px;
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--pill);
+      border: 1px solid var(--line);
+      color: #ededed;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      border-color: #666666;
+      background: #343434;
+    }
+
+    .story-section {
+      margin-top: 30px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(to bottom, rgba(42, 42, 42, 0.97), rgba(35, 35, 35, 0.97));
+      border: 1px solid var(--line-soft);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .story-section:nth-of-type(1) { animation-delay: 0.08s; }
+    .story-section:nth-of-type(2) { animation-delay: 0.16s; }
+    .story-section:nth-of-type(3) { animation-delay: 0.24s; }
+    .story-section:nth-of-type(4) { animation-delay: 0.32s; }
+
+    .story-section h2 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin: 14px 0 0;
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--text-soft);
+    }
+
+    .video-group,
+    .image-group {
+      margin-top: 26px;
+    }
+
+    .single-media {
+      overflow: hidden;
+      border-radius: 22px;
+    }
+
+    .single-media video,
+    .media-card video,
+    .media-card img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid #555555;
+      background: #1f1f1f;
+      transition:
+        transform 0.34s ease,
+        border-color 0.24s ease,
+        filter 0.28s ease;
+    }
+
+    .single-media video:hover,
+    .media-card video:hover,
+    .media-card img:hover {
+      transform: scale(1.012);
+      border-color: #757575;
+      filter: brightness(1.04);
+    }
+
+    .media-grid-2,
+    .media-grid-3 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .media-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .media-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .media-card {
+      padding: 14px;
+      border-radius: 22px;
+      background: linear-gradient(to bottom, #333333, #2c2c2c);
+      border: 1px solid #474747;
+      transition:
+        transform 0.26s ease,
+        border-color 0.24s ease,
+        background 0.24s ease,
+        box-shadow 0.24s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      border-color: #666666;
+      background: linear-gradient(to bottom, #383838, #303030);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .media-card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .media-card p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .overview-card {
+      margin-top: 22px;
+      padding: 24px 24px 22px;
+      border-radius: 22px;
+      background: linear-gradient(to bottom, #323232, #2a2a2a);
+      border: 1px solid #484848;
+      transition:
+        transform 0.24s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease;
+    }
+
+    .overview-card:hover {
+      transform: translateY(-2px);
+      border-color: #676767;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .overview-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--text);
+    }
+
+    .overview-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.95;
+      color: #ebebeb;
+    }
+
+    .overview-card strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .media-grid-2,
+      .media-grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .story-section {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 28px 16px 48px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .summary {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .story-section {
+        padding: 20px 16px;
+        border-radius: 22px;
+      }
+
+      .story-section h2 {
+        font-size: 28px;
+      }
+
+      .media-card {
+        padding: 12px;
+      }
+
+      .overview-card {
+        padding: 18px;
+      }
+
+      .lang-switch {
+        gap: 4px;
+      }
+
+      .lang-btn {
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-topbar">
+        <p class="eyebrow">
+          <span class="lang lang-en active">Unity 2D / Cooperative Narrative Game</span>
+          <span class="lang lang-zh">Unity 2D / 双人协作叙事游戏</span>
+        </p>
+
+        <div class="lang-switch" aria-label="Language switch">
+          <button class="lang-btn active" data-set-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
+        </div>
+      </div>
+
+      <h1>The Jewelry Thieves</h1>
+
+      <p class="summary">
+        <span class="lang lang-en active">
+          A two-player Unity 2D game inspired by the Louvre theft incident in France, combining cooperative gameplay, narrative framing, and success-versus-failure outcomes within a restrained black, white, and gray visual system.
+        </span>
+        <span class="lang lang-zh">
+          一款受法国卢浮宫失窃事件启发的双人 Unity 2D 游戏，结合协作玩法、叙事表达以及成功与失败两种结果，并以克制的黑白灰视觉系统呈现整体氛围。
+        </span>
+      </p>
+
+      <div class="info-row">
+        <div class="pill">
+          <span class="lang lang-en active">Co-op Unity 2D Game</span>
+          <span class="lang lang-zh">双人协作 Unity 2D 游戏</span>
+        </div>
+        <div class="pill">
+          <span class="lang lang-en active">Two-Role Coordination</span>
+          <span class="lang lang-zh">双角色配合机制</span>
+        </div>
+        <div class="pill">
+          <span class="lang lang-en active">Narrative-driven Level Design</span>
+          <span class="lang lang-zh">叙事驱动关卡设计</span>
+        </div>
+        <div class="pill">
+          <span class="lang lang-en active">Museum Security Awareness</span>
+          <span class="lang lang-zh">博物馆安保意识主题</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="story-section">
+      <p class="card-label">
+        <span class="lang lang-en active">Screen 01</span>
+        <span class="lang lang-zh">页面 01</span>
+      </p>
+
+      <h2>
+        <span class="lang lang-en active">Cover & Background Story</span>
+        <span class="lang lang-zh">封面与背景故事</span>
+      </h2>
+
+      <p class="section-intro">
+        <span class="lang lang-en active">
+          The opening introduces the premise, tone, and fictional setup of the game through a cover sequence and narrative background. This first screen frames the player experience before the gameplay begins.
+        </span>
+        <span class="lang lang-zh">
+          开场部分通过封面画面与背景叙事介绍游戏的前提、氛围和虚构设定，为正式进入玩法之前建立整体体验框架。
+        </span>
+      </p>
+
+      <div class="video-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Video</span>
+          <span class="lang lang-zh">视频</span>
+        </p>
+        <div class="single-media">
+          <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185173383?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="01-cover-background-story"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3 class="overview-title">
+          <span class="lang lang-en active">Project Overview</span>
+          <span class="lang lang-zh">项目简介</span>
+        </h3>
+
+        <p>
+          <span class="lang lang-en active">
+            This game is inspired by the Louvre museum theft incident in France and is designed as a <strong>two-player cooperative experience</strong>. Players act as two thieves with different responsibilities: one player can choose to be the thief who places a ladder by the window, while the other distracts the guards. Through coordination, the two players enter the Louvre, steal the designated treasure, and escape through the window to complete the mission successfully.
+            <br /><br />
+            The project is <strong>not intended to glamorize theft</strong>. Rather than making stealing look cool, the game uses entertainment as a way to remind players that many contemporary museums and galleries may still require stronger security systems.
+            <br /><br />
+            Built as a <strong>Unity 2D game</strong>, the project contains two levels. Each level includes both a tutorial and a background story segment, making the overall experience relatively narrative-driven. Visually, the game is built primarily in <strong>black, white, and gray tones</strong> so that the colors of the treasures stand out more clearly as focal points.
+          </span>
+
+          <span class="lang lang-zh">
+            这个游戏基于法国卢浮宫失窃事件展开设计，是一个 <strong>双人协作体验</strong>。玩家分别扮演两名职责不同的大盗：一名负责在窗边搭梯子，另一名负责引开保安。两位玩家需要通过配合潜入卢浮宫，偷取指定宝物，并从窗户逃离，才能成功完成任务。
+            <br /><br />
+            这个项目的目的 <strong>并不是美化盗窃</strong>，也不是想把偷盗塑造成很酷的事情，而是希望通过娱乐性的互动形式提醒人们：当代许多博物馆与艺术馆的安保系统仍有待加强。
+            <br /><br />
+            该项目使用 <strong>Unity 2D</strong> 制作，共包含两个关卡。每个关卡都配有教程和背景故事，因此整体具有较强的叙事性。视觉上主要采用 <strong>黑、白、灰</strong> 作为基调，以突出宝物本身的颜色，使其成为画面中的视觉焦点。
+          </span>
+        </p>
+      </div>
+
+      <div class="image-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Images</span>
+          <span class="lang lang-zh">图片</span>
+        </p>
+        <div class="media-grid-2">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Cover</span>
+              <span class="lang lang-zh">封面</span>
+            </h3>
+            <img src="images/01-cover.jpg" alt="The Jewelry Thieves cover image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Background Story</span>
+              <span class="lang lang-zh">背景故事</span>
+            </h3>
+            <img src="images/02-background-story.jpg" alt="Background story still from The Jewelry Thieves" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <p class="card-label">
+        <span class="lang lang-en active">Screen 02</span>
+        <span class="lang lang-zh">页面 02</span>
+      </p>
+
+      <h2>
+        <span class="lang lang-en active">Level 1</span>
+        <span class="lang lang-zh">第一关</span>
+      </h2>
+
+      <p class="section-intro">
+        <span class="lang lang-en active">
+          Level 1 introduces the first playable scenario through tutorial guidance, a successful path, and a failed path. Presenting these states side by side makes the interaction logic and player feedback easier to understand.
+        </span>
+        <span class="lang lang-zh">
+          第一关通过教程流程、成功路径和失败路径来展示第一个可玩场景。将这几种状态并列呈现，可以更清楚地说明交互逻辑和玩家反馈机制。
+        </span>
+      </p>
+
+      <div class="video-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Videos</span>
+          <span class="lang lang-zh">视频</span>
+        </p>
+        <div class="media-grid-3">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 1 Tutorial</span>
+              <span class="lang lang-zh">第一关教程</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185174765?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="02-level1-tutorial"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Instructional flow introducing the first level and its core actions.
+              </span>
+              <span class="lang lang-zh">
+                展示第一关的教学流程以及核心操作。
+              </span>
+            </p>
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 1 Success</span>
+              <span class="lang lang-zh">第一关成功</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185176145?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="03-level1-success"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Example of a successful completion path in the first level.
+              </span>
+              <span class="lang lang-zh">
+                展示第一关顺利完成任务的路径。
+              </span>
+            </p>
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 1 Failure</span>
+              <span class="lang lang-zh">第一关失败</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185176477?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="04-level1-failure"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Example of failure feedback and an unsuccessful outcome in the first level.
+              </span>
+              <span class="lang lang-zh">
+                展示第一关失败后的反馈与未完成任务的结果。
+              </span>
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="image-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Images</span>
+          <span class="lang lang-zh">图片</span>
+        </p>
+        <div class="media-grid-3">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Tutorial Still</span>
+              <span class="lang lang-zh">教程截图</span>
+            </h3>
+            <img src="images/03-l1-tutorial.jpg" alt="Level 1 tutorial still image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Success Still</span>
+              <span class="lang lang-zh">成功截图</span>
+            </h3>
+            <img src="images/04-l1-success.jpg" alt="Level 1 success still image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Failure Still</span>
+              <span class="lang lang-zh">失败截图</span>
+            </h3>
+            <img src="images/05-l1-failure.jpg" alt="Level 1 failure still image" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <p class="card-label">
+        <span class="lang lang-en active">Screen 03</span>
+        <span class="lang lang-zh">页面 03</span>
+      </p>
+
+      <h2>
+        <span class="lang lang-en active">Level 2</span>
+        <span class="lang lang-zh">第二关</span>
+      </h2>
+
+      <p class="section-intro">
+        <span class="lang lang-en active">
+          Level 2 continues the same tutorial-success-failure structure while extending the narrative and gameplay progression. This makes it easier to compare player outcomes across the two levels.
+        </span>
+        <span class="lang lang-zh">
+          第二关延续了教程、成功与失败并置的结构，同时进一步推进叙事和玩法发展，使两个关卡之间的结果对比更加清晰。
+        </span>
+      </p>
+
+      <div class="video-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Videos</span>
+          <span class="lang lang-zh">视频</span>
+        </p>
+        <div class="media-grid-3">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 2 Tutorial</span>
+              <span class="lang lang-zh">第二关教程</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185176795?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="05-level2-tutorial"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Instructional flow introducing the second level and its mechanics.
+              </span>
+              <span class="lang lang-zh">
+                展示第二关的教学流程以及玩法机制。
+              </span>
+            </p>
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 2 Success</span>
+              <span class="lang lang-zh">第二关成功</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185178809?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="06-level2-success"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Example of successful progression and completion in the second level.
+              </span>
+              <span class="lang lang-zh">
+                展示第二关成功推进并完成任务的过程。
+              </span>
+            </p>
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Level 2 Failure</span>
+              <span class="lang lang-zh">第二关失败</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185179434?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="07-level2-failure"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                Example of failure feedback and a lost attempt in the second level.
+              </span>
+              <span class="lang lang-zh">
+                展示第二关失败反馈以及任务未完成的状态。
+              </span>
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="image-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Images</span>
+          <span class="lang lang-zh">图片</span>
+        </p>
+        <div class="media-grid-3">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Tutorial Still</span>
+              <span class="lang lang-zh">教程截图</span>
+            </h3>
+            <img src="images/06-l2-tutorial.jpg" alt="Level 2 tutorial still image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Success Still</span>
+              <span class="lang lang-zh">成功截图</span>
+            </h3>
+            <img src="images/07-l2-success.jpg" alt="Level 2 success still image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Failure Still</span>
+              <span class="lang lang-zh">失败截图</span>
+            </h3>
+            <img src="images/08-l2-failure.jpg" alt="Level 2 failure still image" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <p class="card-label">
+        <span class="lang lang-en active">Screen 04</span>
+        <span class="lang lang-zh">页面 04</span>
+      </p>
+
+      <h2>
+        <span class="lang lang-en active">Final Outcomes</span>
+        <span class="lang lang-zh">最终结果</span>
+      </h2>
+
+      <p class="section-intro">
+        <span class="lang lang-en active">
+          The final screen presents the two ending states together: successful completion and overall mission failure. This closing comparison makes the result of player coordination immediately visible.
+        </span>
+        <span class="lang lang-zh">
+          最后一部分并列展示两种结局：任务成功与整体失败。通过这种收束式对比，玩家协作的结果能够被直接看见。
+        </span>
+      </p>
+
+      <div class="video-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Videos</span>
+          <span class="lang lang-zh">视频</span>
+        </p>
+        <div class="media-grid-2">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Success Ending</span>
+              <span class="lang lang-zh">成功结局</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185181107?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="08-success-ending"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                The final ending state shown after the mission is completed successfully.
+              </span>
+              <span class="lang lang-zh">
+                展示任务成功完成后的最终结局状态。
+              </span>
+            </p>
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Failure Ending</span>
+              <span class="lang lang-zh">失败结局</span>
+            </h3>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1185181944?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="09-failure-ending"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <p>
+              <span class="lang lang-en active">
+                The final ending state shown when the mission fails.
+              </span>
+              <span class="lang lang-zh">
+                展示任务失败时出现的最终结局状态。
+              </span>
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="image-group">
+        <p class="group-label">
+          <span class="lang lang-en active">Images</span>
+          <span class="lang lang-zh">图片</span>
+        </p>
+        <div class="media-grid-2">
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Success Ending Still</span>
+              <span class="lang lang-zh">成功结局截图</span>
+            </h3>
+            <img src="images/09-success-ending.jpg" alt="Success ending still image" />
+          </article>
+
+          <article class="media-card">
+            <h3>
+              <span class="lang lang-en active">Failure Ending Still</span>
+              <span class="lang lang-zh">失败结局截图</span>
+            </h3>
+            <img src="images/10-failure-ending.jpg" alt="Failure ending still image" />
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const langButtons = document.querySelectorAll("[data-set-lang]");
+    const htmlEl = document.documentElement;
+
+    function setLanguage(lang) {
+      htmlEl.setAttribute("lang", lang);
+
+      document.querySelectorAll(".lang").forEach((el) => {
+        el.classList.remove("active");
+      });
+
+      document.querySelectorAll(".lang-" + lang).forEach((el) => {
+        el.classList.add("active");
+      });
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.setLang === lang);
+      });
+
+      try {
+        localStorage.setItem("jewelry-thieves-language", lang);
+      } catch (e) {}
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.setLang);
+      });
+    });
+
+    try {
+      const savedLang = localStorage.getItem("jewelry-thieves-language");
+      if (savedLang === "zh" || savedLang === "en") {
+        setLanguage(savedLang);
+      } else {
+        setLanguage("en");
+      }
+    } catch (e) {
+      setLanguage("en");
+    }
+  </script>
+</body>
+</html>

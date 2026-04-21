@@ -14,21 +14,43 @@
   <div class="page">
     <header class="hero">
       <div class="hero-text">
-        <p class="eyebrow">Creative Technology · Interactive Media</p>
+        <div class="hero-topbar">
+          <p class="eyebrow">
+            <span class="lang lang-en active">Creative Technology · Interactive Media</span>
+            <span class="lang lang-zh">创意技术 · 交互媒体</span>
+          </p>
+
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-btn active" data-set-lang="en" type="button">EN</button>
+            <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
+          </div>
+        </div>
+
         <h1>Yixuan Chen</h1>
+
         <p class="summary">
-          Dual-degree student in Computation and Design at Duke University and
-          Duke Kunshan University, seeking a Summer 2026 internship in Creative
-          Technology or Interactive Media. Independently designs and builds
-          interactive digital experiences across web, Unity, and creative coding,
-          with a focus on emotional interaction and playful systems.
+          <span class="lang lang-en active">
+            I design and build interactive products, games, and computational artworks
+            across web, Unity, and creative coding.
+          </span>
+          <span class="lang lang-zh">
+            我专注于设计与开发交互产品、游戏与计算艺术作品，使用网页技术、Unity 和创意编程进行表达与实现。
+          </span>
         </p>
       </div>
 
       <div class="contact-card">
-        <p class="card-label">Contact</p>
+        <p class="card-label">
+          <span class="lang lang-en active">Contact</span>
+          <span class="lang lang-zh">联系方式</span>
+        </p>
+
         <p>yc625@duke.edu</p>
-        <p>China · +86 189 9553 1976</p>
+        <p>
+          <span class="lang lang-en active">China · +86 189 9553 1976</span>
+          <span class="lang lang-zh">中国 · +86 189 9553 1976</span>
+        </p>
+
         <p>
           <a
             href="https://linkedin.com/in/yixuan-chen-64a166403"
@@ -40,171 +62,428 @@
         </p>
 
         <div class="button-row always-visible">
-          <a class="btn btn-primary" href="resume.pdf" target="_blank">Resume PDF</a>
-          <a class="btn btn-secondary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#work">
+            <span class="lang lang-en active">View Work</span>
+            <span class="lang lang-zh">查看作品</span>
+          </a>
         </div>
       </div>
     </header>
 
-    <section class="info-grid">
-      <div class="info-card">
-        <p class="card-label">Focus</p>
-        <p>
-          Interactive prototyping, creative coding, emotional design, and
-          experience systems.
+    <section class="intro-section">
+      <div class="intro-card">
+        <p class="card-label">
+          <span class="lang lang-en active">Personal Summary</span>
+          <span class="lang lang-zh">个人概述</span>
         </p>
-      </div>
 
-      <div class="info-card">
-        <p class="card-label">Tools</p>
+        <h2>
+          <span class="lang lang-en active">Introduction</span>
+          <span class="lang lang-zh">自我介绍</span>
+        </h2>
+
         <p>
-          Unity, Figma, JavaScript, p5.js, C#, Python, HTML/CSS, GitHub, Vercel.
+          <span class="lang lang-en active">
+            I am a dual-degree student at Duke University and Duke Kunshan University
+            studying Computation and Design. My work moves across interactive products,
+            games, and artistic systems, with an emphasis on emotional interaction,
+            playful structures, narrative framing, and expressive technical execution.
+          </span>
+          <span class="lang lang-zh">
+            我目前就读于杜克大学与昆山杜克大学联合培养项目，主修 Computation and Design。
+            我的创作横跨交互产品、游戏和艺术系统，关注情感交互、 playful 的结构设计、叙事表达，以及具有表现力的技术实现。
+          </span>
         </p>
-      </div>
 
-      <div class="info-card">
-        <p class="card-label">Interested In</p>
         <p>
-          Emotional interaction, playful systems, creative prototyping, and
-          companion-animal-centered experience design.
+          <span class="lang lang-en active">
+            I work across Unity, web technologies, creative coding, and prototyping
+            tools, and I am especially interested in building experiences that feel
+            personal, reflective, and interactive rather than purely functional.
+          </span>
+          <span class="lang lang-zh">
+            我使用 Unity、网页技术、创意编程和多种原型工具进行设计与开发，
+            尤其希望创造那些具有个人感、反思性和互动性的体验，而不只是单纯功能导向的产品。
+          </span>
         </p>
       </div>
     </section>
 
-    <section class="projects-section" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">Selected Projects</p>
-        <h2>Work I built independently</h2>
-      </div>
-
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-top">
-            <p class="project-meta">HTML, CSS, JavaScript, DeepSeek API</p>
-            <span class="project-emoji">01</span>
-          </div>
-
-          <div class="project-main">
-            <h3>Start Small</h3>
-            <p class="project-subtitle">AI-Powered Gamified Productivity Web App</p>
-          </div>
-
-          <div class="project-reveal">
-            <p class="project-description">
-              An AI-powered web experience that breaks overwhelming tasks into five
-              actionable micro-steps using the DeepSeek API, built with a gamified
-              interface, dynamic audio feedback, and personalized completion summaries.
-            </p>
-
-            <div class="button-row">
-              <a
-                class="btn btn-primary"
-                href="https://start-small-seven.vercel.app"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live Demo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-top">
-            <p class="project-meta">Unity 3D, Figma, C#</p>
-            <span class="project-emoji">02</span>
-          </div>
-
-          <div class="project-main">
-            <h3>Breathe With Me</h3>
-            <p class="project-subtitle">Interactive Mental Health Application</p>
-          </div>
-
-          <div class="project-reveal">
-            <p class="project-description">
-              An interactive wellness application with nine guided breathing modes
-              tailored to different emotional states, built end-to-end from UI/UX
-              design in Figma to Unity implementation with custom timing and visual
-              feedback systems.
-            </p>
-
-            <div class="button-row">
-              <a
-                class="btn btn-primary"
-                href="https://chessiecyx.github.io/Breathe-With-Me/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Project Demo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-top">
-            <p class="project-meta">JavaScript (p5.js), HTML, Processing</p>
-            <span class="project-emoji">03</span>
-          </div>
-
-          <div class="project-main">
-            <h3>Parallel Life</h3>
-            <p class="project-subtitle">Time-Based Generative Digital Art</p>
-          </div>
-
-          <div class="project-reveal">
-            <p class="project-description">
-              A real-time generative artwork that renders a source image across an
-              85-year simulated lifespan using 90,000 pixels, with time-based logic
-              and interactive viewing modes connecting personal chronology with
-              computational visual expression.
-            </p>
-
-            <div class="button-row">
-              <a
-                class="btn btn-primary"
-                href="https://chessiecyx.github.io/Parallel-Life/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live Demo
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="bottom-grid">
-      <div class="concept-card hover-card">
-        <p class="card-label">Concept Project</p>
-        <h2>Interactive Pet Memorial</h2>
-
-        <div class="hover-reveal">
-          <p>
-            An early concept for an interactive digital memorial space centered on
-            digital afterlife, remembrance, and emotional continuity.
+    <main id="work">
+      <section class="category-section">
+        <div class="section-heading">
+          <p class="eyebrow">
+            <span class="lang lang-en active">Category 01</span>
+            <span class="lang lang-zh">类别 01</span>
           </p>
-          <p class="muted">
-            Exploring behavioral interaction and 3D environments for
-            companion-animal-centered experience design.
-          </p>
+          <h2>
+            <span class="lang lang-en active">Interactive Products</span>
+            <span class="lang lang-zh">交互产品</span>
+          </h2>
         </div>
-      </div>
 
-      <div class="about-card hover-card">
-        <p class="card-label">About</p>
+        <div class="projects-grid two-col">
+          <article class="project-card">
+            <div class="project-top">
+              <p class="project-meta">HTML, CSS, JavaScript, DeepSeek API</p>
+              <span class="project-emoji">01</span>
+            </div>
 
-        <div class="hover-reveal visible-by-default-mobile">
-          <p>
-            I am a dual-degree student at Duke University and Duke Kunshan
-            University studying Computation and Design. My work often explores
-            emotional states, memory, time, and small moments of interaction
-            through prototypes that are both expressive and technically built.
-          </p>
+            <div class="project-main">
+              <h3>Start Small</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  AI-powered productivity product with playful interaction
+                </span>
+                <span class="lang lang-zh">
+                  结合 playful interaction 的 AI 效率产品
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  A web product that breaks overwhelming tasks into five actionable
+                  micro-steps using the DeepSeek API, framed through a gamified interface
+                  and personalized completion feedback.
+                </span>
+                <span class="lang lang-zh">
+                  一个基于 DeepSeek API 的网页产品，把令人有压力的大任务拆解为五个可执行的小步骤，
+                  并通过游戏化界面与个性化反馈提升完成体验。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <a
+                  class="btn btn-primary"
+                  href="https://start-small-seven.vercel.app"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span class="lang lang-en active">View Project</span>
+                  <span class="lang lang-zh">查看项目</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <p class="project-meta">Unity 2D, Figma, C#</p>
+              <span class="project-emoji">02</span>
+            </div>
+
+            <div class="project-main">
+              <h3>Breathe With Me</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  Interactive wellness product for guided breathing
+                </span>
+                <span class="lang lang-zh">
+                  面向呼吸引导的交互式健康产品
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  An interactive wellness application with nine guided breathing modes,
+                  designed in Figma and built in Unity with custom timing and visual
+                  feedback systems.
+                </span>
+                <span class="lang lang-zh">
+                  一个包含九种呼吸模式的交互式健康应用，
+                  从 Figma 界面设计到 Unity 2D 实现均由我独立完成，并加入了节奏控制与视觉反馈系统。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <a
+                  class="btn btn-primary"
+                  href="https://chessiecyx.github.io/Breathe-With-Me/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span class="lang lang-en active">View Project</span>
+                  <span class="lang lang-zh">查看项目</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="category-section">
+        <div class="section-heading">
+          <p class="eyebrow">
+            <span class="lang lang-en active">Category 02</span>
+            <span class="lang lang-zh">类别 02</span>
+          </p>
+          <h2>
+            <span class="lang lang-en active">Games</span>
+            <span class="lang lang-zh">游戏</span>
+          </h2>
+        </div>
+
+        <div class="projects-grid two-col">
+          <article class="project-card">
+            <div class="project-top">
+              <p class="project-meta">Unity 2D, Co-op Design, Narrative</p>
+              <span class="project-emoji">03</span>
+            </div>
+
+            <div class="project-main">
+              <h3>The Jewelry Thieves</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  Cooperative heist game with dual roles
+                </span>
+                <span class="lang lang-zh">
+                  双角色协作式盗窃题材游戏
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  A two-player Unity 2D game inspired by the Louvre theft incident,
+                  combining cooperation, narrative setup, tutorial flow, and
+                  success-versus-failure outcomes.
+                </span>
+                <span class="lang lang-zh">
+                  一款受卢浮宫失窃事件启发的双人 Unity 2D 游戏，
+                  结合协作玩法、叙事铺垫、教程流程以及成功与失败两种结局状态。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <a class="btn btn-primary" href="The_Jewelry_Thieves/index.html">
+                  <span class="lang lang-en active">View Project</span>
+                  <span class="lang lang-zh">查看项目</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <p class="project-meta">Board Game, Social Play, Rule Design</p>
+              <span class="project-emoji">04</span>
+            </div>
+
+            <div class="project-main">
+              <h3>DRAMAAAA!</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  Entertainment-industry board game about fame and scandal
+                </span>
+                <span class="lang lang-zh">
+                  围绕名望、财富与丑闻展开的娱乐圈桌游
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  A theatrical social board game set in the entertainment industry,
+                  where players compete through fame, fortune, favors, and scandal
+                  while navigating a dramatic system of reputation and reversal.
+                </span>
+                <span class="lang lang-zh">
+                  一个以娱乐圈为背景的戏剧化社交桌游。玩家围绕名望、财富、人情与丑闻展开竞争，
+                  并在充满反转与声望博弈的系统中争夺最终胜利。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <a class="btn btn-primary" href="DRAMAAAA/index.html">
+                  <span class="lang lang-en active">View Project</span>
+                  <span class="lang lang-zh">查看项目</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
+
+          <article class="project-card project-placeholder">
+            <div class="project-top">
+              <p class="project-meta">
+                <span class="lang lang-en active">Thesis Project, In Progress</span>
+                <span class="lang lang-zh">毕业设计，进行中</span>
+              </p>
+              <span class="project-emoji">05</span>
+            </div>
+
+            <div class="project-main">
+              <h3>Interactive Pet Memorial</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  Narrative game thesis exploring memory and digital afterlife
+                </span>
+                <span class="lang lang-zh">
+                  探索记忆与数字延续性的叙事游戏毕业设计
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  My ongoing capstone project. Currently in concept development, focused on
+                  remembrance, emotional continuity, and companion-animal-centered interaction.
+                </span>
+                <span class="lang lang-zh">
+                  我正在进行中的毕业设计项目，目前处于概念发展阶段，
+                  聚焦纪念、情感延续，以及以陪伴动物为中心的互动体验。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <span class="btn btn-disabled">
+                  <span class="lang lang-en active">In Progress</span>
+                  <span class="lang lang-zh">进行中</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section">
+        <div class="section-heading">
+          <p class="eyebrow">
+            <span class="lang lang-en active">Category 03</span>
+            <span class="lang lang-zh">类别 03</span>
+          </p>
+          <h2>
+            <span class="lang lang-en active">Art Works</span>
+            <span class="lang lang-zh">艺术作品</span>
+          </h2>
+        </div>
+
+        <div class="projects-grid one-col">
+          <article class="project-card">
+            <div class="project-top">
+              <p class="project-meta">JavaScript (p5.js), HTML, Processing</p>
+              <span class="project-emoji">06</span>
+            </div>
+
+            <div class="project-main">
+              <h3>Parallel Life</h3>
+              <p class="project-subtitle">
+                <span class="lang lang-en active">
+                  Time-based generative artwork on personal chronology
+                </span>
+                <span class="lang lang-zh">
+                  围绕个人时间线展开的时间型生成艺术作品
+                </span>
+              </p>
+            </div>
+
+            <div class="project-reveal">
+              <p class="project-description">
+                <span class="lang lang-en active">
+                  A real-time generative artwork that renders a source image across an
+                  85-year simulated lifespan using 90,000 pixels, connecting personal
+                  chronology with computational visual expression.
+                </span>
+                <span class="lang lang-zh">
+                  一件实时生成艺术作品，通过 90,000 个像素在模拟的 85 年生命历程中逐步重构图像，
+                  将个人时间经验与计算视觉表达联系起来。
+                </span>
+              </p>
+
+              <div class="button-row">
+                <a
+                  class="btn btn-primary"
+                  href="https://chessiecyx.github.io/Parallel-Life/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span class="lang lang-en active">View Project</span>
+                  <span class="lang lang-zh">查看项目</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-hint">
+              <span class="lang lang-en active">Hover to view more</span>
+              <span class="lang lang-zh">悬停查看更多</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <script>
+    const langButtons = document.querySelectorAll("[data-set-lang]");
+    const htmlEl = document.documentElement;
+
+    function setLanguage(lang) {
+      htmlEl.setAttribute("lang", lang);
+
+      document.querySelectorAll(".lang").forEach((el) => {
+        el.classList.remove("active");
+      });
+
+      document.querySelectorAll(".lang-" + lang).forEach((el) => {
+        el.classList.add("active");
+      });
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.setLang === lang);
+      });
+
+      try {
+        localStorage.setItem("portfolio-language", lang);
+      } catch (e) {}
+    }
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.setLang);
+      });
+    });
+
+    try {
+      const savedLang = localStorage.getItem("portfolio-language");
+      if (savedLang === "zh" || savedLang === "en") {
+        setLanguage(savedLang);
+      } else {
+        setLanguage("en");
+      }
+    } catch (e) {
+      setLanguage("en");
+    }
+  </script>
 </body>
 </html>
